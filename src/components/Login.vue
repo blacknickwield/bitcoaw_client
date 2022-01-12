@@ -61,13 +61,12 @@ export default {
         const {data: result} = await this.$http.post('/user/login?schoolId='+this.form.schoolId + '&password=' + this.form.password);
         console.log('/user/login?schoolId='+this.form.schoolId + '&password=' + this.form.password);
         console.log(result);
+        this.$store.state.userInfo = result.data.userInfo
+        this.$store.state.token = result.data.token
         window.sessionStorage.setItem("token", result.data.token)
         console.log(result.data.token)
         await this.$router.push('home');
       })
-      // console.log(this.form)
-
-      // console.log("login")
     }
   }
 }
